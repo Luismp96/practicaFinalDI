@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+
+        <title>YLEAGUE</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="./js/index.js"></script>
+        <script src="./js/funciones.js"></script>
+        <link rel="icon" href="../img/icono.png" type="image/png">
+
+    </head>
+
+    <body>
+
+        <div class="contenedorGrid">
+
+            <div class="caja c1">
+                <header>
+
+                    <table class="tablageneral">
+
+                        <tr>
+                            <td>
+                                <div class="contenedor">
+                                    <ul>
+                                        <h1>YLEAGUE</h1>
+                                        <button id="iniciarsesion">INICIAR SESION</button>
+                                        <button id="anadirJugador" class="botonnuevojugador">NUEVO JUGADOR</button>
+                                        <button id="eliminarJugador" class="botoneliminarjugador">ELIMINAR JUGADOR</button>
+                                        <button id="buscarJugador" class="botonbuscarjugador">BUSCAR JUGADOR</button>
+                                        <button id="buscarEquipo" class="botonbuscarequipo">BUSCAR EQUIPO</button>
+                                        <input type="text" id="buscador">
+                                        <button id="logoff" class="logoff">LOG OFF</button>
+                                        <button id="registro">REGISTRATE</button>
+                                        <button id="consulta">REALIZAR CONSULTA</button>
+                                    
+                                    </ul>
+                                
+                                </div>
+                            </td>
+                        
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="contenedor2">
+                                    <ul>
+                                        <div id="botonmenu1"><li><a href="#">INICIO</a></li></div>
+                                        <div id="botonmenu2"><li><a href="#">EQUIPOS</a></li></div>
+                                        <div id="botonmenu3"><li><a href="#">COMPETICIONES</a></li></div>
+                                        <div id="botonmenu4"><li><a href="#">JORNADAS</a></li></div>
+                                    </ul>
+                                </div>
+                            </td>
+                            
+                        </tr>   
+        
+                    </table>
+
+                </header>
+
+            </div>
+        
+            <div class="caja c2"> 
+                <nav>
+
+                </nav>
+            </div>
+
+            <div class="caja c3">
+                <section>
+            
+                </section>
+            </div>
+
+            <div class="caja c4">
+                <aside>
+
+                </aside>
+            </div>
+
+            <div class="caja c5">
+                2024 (C) Luis Martin Portillo
+            </div>
+
+
+        </div>
+
+        <div id="modal">
+            <div id="contenedormodal">
+            </div>
+        </div>
+
+        
+        <div id="plantillas">
+            <!--PLANTILLA PARA LAS NOTICIAS-->
+            <template id="plantillanoticia">
+                <article>
+                    <h3 class="titulonoticia">Titulo de la Noticia</h3>
+                    <time>2024-01-17</time>
+                    <p>Texto de la Noticia</p>
+                </article>
+            </template>
+
+
+            <!--PLANTILLA PARA LOS EQUIPOS-->
+            <template id="plantillaequipo">
+                <article>
+                    <h3>Nombre del Equipo</h3>
+                    <br><br>
+                    <div class="descripcionequipo">
+                        
+                        <div id="ciudad">
+                            LOCALIDAD
+                            <h5>Ciudad</h5>
+                        </div>
+                        <div id="ptotales">
+                            PUNTOS TOTALES (LIGA)
+                            <p>Puntos Totales</p>
+                        </div>
+                        <div id="njugadores">
+                            NUMERO JUGADORES
+                        </div>
+                            
+                    </div>
+                    
+                </article>
+            </template>
+
+
+            <!--PLANTILLA PARA LOS EQUIPOS CUANDO REALIZAMOS BUSQUEDA-->
+            <template id="plantillaequipob">
+                <article>
+                    <h3>Nombre del Equipo</h3>
+                    <br><br>
+                    <div class="descripcionequipo">
+                        
+                        <div id="posicion">
+                            POSICION
+                        </div>
+                        <div id="ptotales">
+                            PUNTOS TOTALES (LIGA)
+                        </div>
+                        <div id="njugadores">
+                            NUMERO JUGADORES
+                        </div>
+                            
+                    </div>
+                    
+                </article>
+            </template>
+
+            <!--PLANTILLA PARA LOS EQUIPOS CUANDO DESPLEGAMOS LAS COMPETICIONES (CUANDO NO ES LIGA)-->
+            <template id="plantillaequipocompeticiones">
+                <article>
+                    <h3>Nombre del Equipo</h3>
+                    <br><br>
+                    <div class="descripcionequipo">
+                        
+                        <div id="ciudad">
+                            LOCALIDAD
+                            <h5>Ciudad</h5>
+                        </div>
+                        <div id="njugadores">
+                            NUMERO JUGADORES
+                        </div>
+                            
+                    </div>
+                    
+                </article>
+            </template>
+
+            <!--PLANTILLA PARA LOS EQUIPOS CUANDO CONSULTAMOS LA LIGA-->
+            <template id="plantillaequipoliga">
+                <article>
+                    <h3>Nombre del Equipo</h3>
+                    <br><br>
+                    <div class="descripcionequipo">
+                        
+                        <div id="puntos">
+                            PUNTOS
+                            <h5></h5>
+                        </div>
+                        <div id="ganados">
+                            GANADOS
+                        </div>
+                        <div id="empatados">
+                            EMPATADOS
+                        </div>
+                        <div id="perdidos">
+                            PERDIDOS
+                        </div>
+                    </div>
+                    
+                </article>
+            </template>
+
+
+            <!--PLANTILLA PARA LAS COMPETICIONES-->
+            <template id="plantillacompeticiones">
+                <article class="competiciones">
+                    <h3>Nombre</h3>
+                    <div>NUMERO DE EQUIPOS
+                        <p>Numero Equipos</p>
+                    </div>
+                </article>
+            </template>
+
+            <!--PLANTILLA PARA LAS JORNADAS-->
+            <template id="plantillajornadas">
+                <article class="jornadas">
+                    <table class="tablajornadas">
+                        <tr>
+                            <td>
+                                <div id="elocal">EQUIPO LOCAL
+                        
+                                </div>
+                            </td>
+                            <td>
+                                <div id="glocal" style="color:orange">GOLES LOCAL
+                        
+                                </div>
+                            </td>
+                            <td>
+                                <div id="gvisitante" style="color:orange">GOLES VISITANTE
+                        
+                                </div>
+                            </td>
+                            <td>
+                                <div id="evisitante">EQUIPO VISITANTE
+                        
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </article>
+            </template>
+
+            <!--PLANTILLA CABECERA JUGADORES-->
+            <template id="cabecerajugadores">
+                <article class="cabecera">
+                    <p>Texto Cabecera</p>
+                </article>
+            </template>
+            
+            <!--PLANTILLA CABECERA COMPETICIONES (NO LIGA)-->
+            <template id="cabeceracompeticiones">
+                <article class="cabecera">
+                    <p>Texto Cabecera</p>
+                </article>
+            </template>
+
+            <!--PLANTILLA CABECERA JORNADAS-->
+            <template id="cabecerajornada">
+                <article class="cabecera">
+                    <p></p>
+                </article>
+            </template>
+
+
+            <!--PLANTILLA COMPETICIONES (liga)-->
+            <template id="cabeceraliga">
+                <article class="cabecera">
+                    <p>Texto Cabecera</p>
+                </article>
+            </template>
+
+            <!--PLANTILLA JUGADORES-->
+            <template id="plantillajugadores">
+                <article class="jugador">
+                    <h3>Nombre Jugador</h3>
+                    <div id="datosjugador">
+                        <div id="edadjugador">
+                            EDAD
+                        </div>
+                        <div id="posicionjugador">
+                            POSICION
+                        </div>
+                        <div id="dorsaljugador">
+                            DORSAL
+                        </div>
+
+                    </div>
+                    
+                </article>
+            </template>
+
+            <!--PLANTILLA JUGADORES EN BUSQUEDA-->
+            <template id="plantillajugadoresb">
+                <article class="jugador">
+                    <h3>Nombre Jugador</h3>
+                    <div id="datosjugador">
+                        <div id="equipojugador">
+                            EQUIPO
+                        </div>
+                        <div id="posicionjugador">
+                            POSICION
+                        </div>
+                        <div id="dorsaljugador">
+                            DORSAL
+                        </div>
+
+                    </div>
+                    
+                </article>
+            </template>
+
+            <!--PLANTILLA PARA INICIO DE SESION-->
+            <template id="iniciosesion">
+                <h3>INICIO DE SESION</h3>
+                <input type="text" id="usuario">
+                <input type="password" id="contrasena">
+                <button id="enviainiciosesion"><b>Entrar</b></button>
+            </template>
+
+            <!--PLANTILLAS CUANDO NO HAY RESULTADOS-->
+            <template id="plantillasinresultado">
+                <article class="sinrespuesta">
+                    <p>No hay respuestas a esta pregunta.</p>
+                </article>
+            </template>
+
+            <!--PLANTILLA CUANDO NO HAY EQUIPOS EN COMPETICIONES-->
+            <template id="plantillasinresultadocompeticion">
+                <article class="sinrespuesta">
+                    <p>No hay equipos inscritos en esta competicion.</p>
+                </article>
+            </template>
+
+            <!--PLANTILLA CABECERA POSICIONES EN CONSULTA LIGA-->
+            <template id="cabeceraposicion">
+                <article class="cabeceraposicion">
+                    <p>Numero de Posicion</p>
+                </article>
+            </template>
+        </div>
+        <footer>
+
+        </footer>
+    </body>
+
+
+</html>
